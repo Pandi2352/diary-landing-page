@@ -360,11 +360,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                         </div>
 
                         {series.innerImage ? (
-                          <div className="relative rounded-md overflow-hidden border border-amber-200/80 bg-white flex items-center justify-center min-h-[380px] p-3">
+                          <div className="relative rounded-md overflow-hidden border border-amber-200/80 bg-white flex items-center justify-center min-h-[260px] sm:min-h-[340px] md:min-h-[380px] p-2.5 sm:p-3">
                             <img
                               src={`/${series.innerImage}`}
                               alt={`${series.name} Inner Layout`}
-                              className="w-full h-auto object-contain max-h-[440px] hover:scale-102 transition-transform duration-200"
+                              className="w-full h-auto object-contain max-h-[320px] sm:max-h-[440px] hover:scale-102 transition-transform duration-200"
                             />
                             <div className="absolute bottom-2 left-2 right-2 bg-white/95 backdrop-blur-xs px-2.5 py-1.5 rounded-md border border-slate-200 text-[10px] text-slate-700 flex items-center justify-between">
                               <span className="font-semibold">Authentic Inner Specimen</span>

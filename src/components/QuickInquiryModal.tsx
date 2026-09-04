@@ -42,9 +42,9 @@ export const QuickInquiryModal: React.FC<QuickInquiryModalProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm">
       {/* Modal Container: rounded-md, no shadows */}
-      <div className="relative w-full max-w-lg rounded-md bg-white border border-slate-300 p-6 sm:p-7 overflow-hidden">
+      <div className="relative w-full max-w-lg max-h-[92vh] overflow-y-auto rounded-md bg-white border border-slate-300 p-5 sm:p-7">
         
         {/* Close Button */}
         <button
@@ -112,7 +112,7 @@ export const QuickInquiryModal: React.FC<QuickInquiryModalProps> = ({
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-medium text-slate-700 mb-1">
                     Order Quantity

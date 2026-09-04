@@ -148,25 +148,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Trust badges */}
             <ul
-              className="hero-rise mt-9 inline-flex flex-wrap items-center justify-center gap-3 sm:gap-5 rounded-2xl border border-white/80 bg-white/70 px-4 py-2.5 backdrop-blur-md text-xs font-semibold text-slate-700 lg:justify-start"
+              className="hero-rise mt-8 sm:mt-9 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-3 sm:gap-5 rounded-2xl border border-white/80 bg-white/75 px-3.5 sm:px-5 py-2.5 backdrop-blur-md text-xs font-semibold text-slate-700 lg:justify-start"
               style={{ animationDelay: '0.88s' }}
             >
               {TRUST_BADGES.map(({ id, icon: Icon, chip, line1, line2 }) => (
-                <li key={id} className="flex items-center gap-2.5 text-left">
+                <li key={id} className="flex items-center gap-2 sm:gap-2.5 text-left">
                   <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full ${chip}`}>
                     <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                   </span>
                   <span className="leading-tight">
-                    <span className="block font-bold text-slate-900">{line1}</span>
-                    <span className="text-[11px] font-medium text-slate-600">{line2}</span>
+                    <span className="block font-bold text-slate-900 text-xs">{line1}</span>
+                    <span className="text-[10px] sm:text-[11px] font-medium text-slate-600">{line2}</span>
                   </span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* ===================== Right: Artwork canvas spacer ===================== */}
-          <div className="lg:col-span-6 min-h-[280px] sm:min-h-[380px] lg:min-h-[540px] pointer-events-none" />
+          {/* ===================== Right: Artwork canvas spacer (Desktop only) ===================== */}
+          <div className="hidden lg:block lg:col-span-6 lg:min-h-[540px] pointer-events-none" />
         </div>
 
         {/* ===================== Series marquee ===================== */}

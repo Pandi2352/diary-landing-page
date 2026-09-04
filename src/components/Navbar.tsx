@@ -107,10 +107,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
                 2025 Ed.
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 tracking-wide font-medium flex items-center gap-1.5">
-              <span>Sutharsan Offset Printers</span>
-              <span className="w-1 h-1 rounded-full bg-slate-400" />
-              <span className="text-amber-800 font-semibold font-serif italic">Sivakasi</span>
+            <p className="text-[10px] sm:text-[11px] text-slate-500 tracking-wide font-medium flex items-center gap-1.5 max-w-[180px] sm:max-w-none truncate">
+              <span className="truncate">Sutharsan Offset Printers</span>
+              <span className="w-1 h-1 rounded-full bg-slate-400 shrink-0" />
+              <span className="text-amber-800 font-semibold font-serif italic shrink-0">Sivakasi</span>
             </p>
           </div>
         </button>

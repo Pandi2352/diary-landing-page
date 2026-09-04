@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar'
 import { HeroSection } from './components/HeroSection'
 import { AboutSection } from './components/AboutSection'
 import { ProcessSection } from './components/ProcessSection'
+import { ExploreSection } from './components/ExploreSection'
 import { CustomizeSection } from './components/CustomizeSection'
 import { CollectionsShowcase } from './components/CollectionsShowcase'
 import { PrintingSolutions } from './components/PrintingSolutions'
@@ -34,21 +35,7 @@ function HomePage({
         <AboutSection />
       </BookSectionReveal>
 
-      <BookSectionReveal delayMs={75}>
-        <CustomizeSection
-          onOpenInquiry={(details?: string) => onOpenInquiry(details || 'Customized Diary')}
-        />
-      </BookSectionReveal>
-
-      <BookSectionReveal delayMs={100}>
-        <CollectionsShowcase
-          onSelectProduct={(name) => onOpenInquiry(name)}
-          onInspect3D={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }}
-        />
-      </BookSectionReveal>
-
+      {/* 1. "FROM IDEA TO DIARY" Process Section */}
       <BookSectionReveal delayMs={50}>
         <ProcessSection
           onStartRequirement={() => {
@@ -58,6 +45,29 @@ function HomePage({
         />
       </BookSectionReveal>
 
+      {/* 2. "Explore Us: The 4 Pillars of Sorsons Diaries" */}
+      <BookSectionReveal delayMs={60}>
+        <ExploreSection />
+      </BookSectionReveal>
+
+      {/* 3. "CUSTOMIZATION STUDIO" */}
+      <BookSectionReveal delayMs={75}>
+        <CustomizeSection
+          onOpenInquiry={(details?: string) => onOpenInquiry(details || 'Customized Diary')}
+        />
+      </BookSectionReveal>
+
+      {/* 4. Products Collections Showcase */}
+      <BookSectionReveal delayMs={100}>
+        <CollectionsShowcase
+          onSelectProduct={(name) => onOpenInquiry(name)}
+          onInspect3D={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+        />
+      </BookSectionReveal>
+
+      {/* 5. Printing Solutions */}
       <BookSectionReveal delayMs={150}>
         <PrintingSolutions />
       </BookSectionReveal>

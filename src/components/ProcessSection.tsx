@@ -61,7 +61,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ }) => {
   ]
 
   return (
-    <section className="relative isolate overflow-hidden py-20 md:py-28 bg-[#faf8f4] border-y border-amber-100/70">
+    <section className="relative isolate overflow-hidden pt-8 md:pt-10 pb-16 md:pb-24 bg-[#faf8f4] border-y border-amber-100/70">
       {/* Subtle ambient background glow */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f5] via-[#faf8f4] to-[#faf9f5]" />
@@ -71,13 +71,13 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ }) => {
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-24">
 
         {/* Section Header matching reference image */}
-        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-14">
           <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold text-amber-800 uppercase tracking-[0.22em] mb-2.5">
             <span>FROM IDEA TO DIARY</span>
           </div>
 
           {/* Centered gold accent bar like reference image */}
-          <div className="w-12 h-0.5 bg-amber-600/80 mx-auto mb-4 rounded-full" />
+          <div className="w-12 h-0.5 bg-amber-600/80 mx-auto mb-3 sm:mb-4 rounded-full" />
 
           <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display tracking-tight">
             How Your Bespoke Diary Comes to Life
@@ -97,7 +97,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ }) => {
           />
 
           {/* Grid of 6 Steps */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 sm:gap-4 lg:gap-6 relative z-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-4 lg:gap-6 relative z-10">
             {steps.map((step, idx) => {
               const Icon = step.icon
               const isHovered = activeStep === idx

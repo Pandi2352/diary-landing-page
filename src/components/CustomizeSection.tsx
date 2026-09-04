@@ -241,8 +241,8 @@ export const CustomizeSection: React.FC<CustomizeSectionProps> = ({
             {/* The Visual Stage with Interactive Connecting Callouts */}
             <div className="relative w-full max-w-[640px] py-6 flex items-center justify-center">
               
-              {/* Left Side Callout Badges (Desktop) */}
-              <div className="hidden sm:flex flex-col justify-between h-[340px] z-20 shrink-0 w-36 sm:w-44 text-right pr-2">
+              {/* Left Side Callout Badges (Desktop only) */}
+              <div className="hidden lg:flex flex-col justify-between h-[340px] z-20 shrink-0 w-40 xl:w-44 text-right pr-2">
                 {leftCallouts.map((callout) => {
                   const isActive = activeCallout.id === callout.id
                   return (
@@ -262,7 +262,7 @@ export const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                         {callout.label}
                       </button>
                       <div
-                        className={`w-8 sm:w-10 border-t-2 border-dashed transition-colors ${
+                        className={`w-8 xl:w-10 border-t-2 border-dashed transition-colors ${
                           isActive ? 'border-amber-500' : 'border-amber-300/80 group-hover:border-amber-500'
                         }`}
                       />
@@ -272,7 +272,7 @@ export const CustomizeSection: React.FC<CustomizeSectionProps> = ({
               </div>
 
               {/* Center Diary Image Card with Glass Podium */}
-              <div className="relative w-[280px] sm:w-[320px] md:w-[350px] aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-white border-2 border-amber-200/90 z-10 shrink-0 group/img transition-all duration-300">
+              <div className="relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-white border-2 border-amber-200/90 z-10 shrink-0 group/img transition-all duration-300">
                 <img
                   src="/images/burgundy_diary.jpg"
                   alt="Custom Sorsons Bespoke Diary"
@@ -331,8 +331,8 @@ export const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                 </div>
               </div>
 
-              {/* Right Side Callout Badges (Desktop) */}
-              <div className="hidden sm:flex flex-col justify-between h-[340px] z-20 shrink-0 w-36 sm:w-44 text-left pl-2">
+              {/* Right Side Callout Badges (Desktop only) */}
+              <div className="hidden lg:flex flex-col justify-between h-[340px] z-20 shrink-0 w-40 xl:w-44 text-left pl-2">
                 {rightCallouts.map((callout) => {
                   const isActive = activeCallout.id === callout.id
                   return (
@@ -342,7 +342,7 @@ export const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                       onClick={() => handleCalloutClick(callout)}
                     >
                       <div
-                        className={`w-8 sm:w-10 border-t-2 border-dashed transition-colors ${
+                        className={`w-8 xl:w-10 border-t-2 border-dashed transition-colors ${
                           isActive ? 'border-amber-500' : 'border-amber-300/80 group-hover:border-amber-500'
                         }`}
                       />
@@ -363,8 +363,8 @@ export const CustomizeSection: React.FC<CustomizeSectionProps> = ({
 
             </div>
 
-            {/* Mobile Callout Pills Horizontal Scrollbar (Visible on small screens) */}
-            <div className="flex sm:hidden flex-wrap items-center justify-center gap-2 mt-4 px-2">
+            {/* Mobile / Tablet Callout Pills (Visible on small & medium screens) */}
+            <div className="flex lg:hidden flex-wrap items-center justify-center gap-2 mt-4 px-2">
               {callouts.map((callout) => {
                 const isActive = activeCallout.id === callout.id
                 return (
@@ -372,10 +372,10 @@ export const CustomizeSection: React.FC<CustomizeSectionProps> = ({
                     key={callout.id}
                     type="button"
                     onClick={() => handleCalloutClick(callout)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-display font-bold transition-all ${
+                    className={`px-3 py-1.5 rounded-xl text-xs font-display font-bold transition-all cursor-pointer ${
                       isActive
                         ? 'bg-slate-950 text-white border border-amber-400 ring-2 ring-amber-400/20'
-                        : 'bg-white text-slate-800 border border-amber-200/80'
+                        : 'bg-white text-slate-800 border border-amber-200/80 hover:border-amber-400'
                     }`}
                   >
                     {callout.label}
