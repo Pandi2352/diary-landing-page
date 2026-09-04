@@ -334,14 +334,9 @@
 
 /* --- Hero background artwork ---------------------------------------------- */
 
-/* Very slow breathing zoom so the printed frame is not dead still */
-@keyframes heroBgDrift {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.045); }
-}
 .hero-bg-art {
-  animation: heroBgDrift 32s ease-in-out infinite;
-  will-change: transform;
+  /* Static background - no zooming or drifting */
+  will-change: auto;
 }
 
 /* Cream veil that lifts the headline off the artwork without hiding it */

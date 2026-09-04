@@ -39,29 +39,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section
       id="home"
-      className="relative isolate flex items-center overflow-hidden bg-[#fdf6ec] pt-28 pb-16 md:pt-32 md:pb-20 lg:min-h-[92vh]"
+      className="relative isolate flex items-center overflow-hidden bg-[#fdf6ec] pt-24 pb-14 md:pt-28 md:pb-16 lg:min-h-[84vh]"
     >
-      {/* ===================== Background artwork ===================== */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        {/* The painted frame: gradient blobs, doodles and stationery at the edges */}
-        <div className="hero-bg-art absolute inset-0 bg-[url('/images/hero_bg.png')] bg-cover bg-center bg-no-repeat" />
+      {/* ===================== Background artwork (starts below navbar) ===================== */}
+      <div aria-hidden="true" className="pointer-events-none absolute top-16 sm:top-20 inset-x-0 bottom-0 -z-10 overflow-hidden">
+        {/* Full-bleed unified hero artwork: starts below navbar, zero clipping */}
+        <img
+          src="/images/unified_hero_banner.jpg?v=final7"
+          alt=""
+          className="w-full h-full object-cover object-right select-none"
+        />
 
-        {/* Cream veil so the copy always sits on a calm ground */}
-        <div className="hero-veil absolute inset-0" />
-
-        {/* Colour wash tying the artwork to the section below it */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-200/10 via-transparent to-sky-200/15" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#fdf6ec] to-transparent" />
-
-        <div className="hero-noise absolute inset-0" />
+        {/* Soft bottom blend to transition smoothly into the next section */}
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#fdf6ec] to-transparent" />
       </div>
 
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-24">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
           {/* ===================== Left: typography & CTAs ===================== */}
-          <div className="text-center lg:col-span-6 lg:text-left">
+          <div className="text-center lg:col-span-6 lg:text-left max-w-xl xl:max-w-2xl">
             {/* Headline */}
-            <h1 className="hero-rise font-display text-4xl font-black leading-[1.08] tracking-[-0.03em] text-slate-950 sm:text-5xl lg:text-[3.75rem] xl:text-[4.25rem]">
+            <h1 className="hero-rise font-display text-3xl font-black leading-[1.1] tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-[3.2rem] xl:text-[3.65rem]">
               <div className="flex items-baseline justify-center gap-3 lg:justify-start">
                 <span>Your</span>
                 <span className="relative inline-block">
@@ -167,16 +165,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </ul>
           </div>
 
-          {/* ===================== Right: Full-height stationary composition ===================== */}
-          <div className="lg:col-span-6 flex items-center justify-center lg:justify-end">
-            <div className="relative w-full flex items-center justify-center lg:justify-end">
-              <img
-                src="/images/dreamy_hero_diaries.jpg"
-                alt="Better Days Ahead pastel marble diary flanked by the Small Steps Big Dreams black journal and the Good Things Take Time emerald botanical journal, displayed on a lilac pedestal"
-                className="hero-feather w-full h-auto max-h-[580px] lg:max-h-[660px] xl:max-h-[720px] object-contain select-none"
-              />
-            </div>
-          </div>
+          {/* ===================== Right: Artwork canvas spacer ===================== */}
+          <div className="lg:col-span-6 min-h-[280px] sm:min-h-[380px] lg:min-h-[540px] pointer-events-none" />
         </div>
 
         {/* ===================== Series marquee ===================== */}
