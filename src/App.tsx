@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Navbar } from './components/Navbar'
 import { HeroSection } from './components/HeroSection'
 import { AboutSection } from './components/AboutSection'
+import { ProcessSection } from './components/ProcessSection'
 import { CollectionsShowcase } from './components/CollectionsShowcase'
 import { PrintingSolutions } from './components/PrintingSolutions'
 import { Footer } from './components/Footer'
@@ -31,7 +32,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#faf9f5] text-slate-900 flex flex-col font-sans selection:bg-amber-400 selection:text-slate-950 relative">
-      
+
       {/* Global Diary Outline Background Image (Stationery line art across all pages) */}
       <div
         aria-hidden="true"
@@ -40,22 +41,14 @@ export default function App() {
 
       {/* Top Navigation */}
       <Navbar
-
-
-
-
-
-
         activeSection={activeSection}
         setActiveSection={setActiveSection}
         onOpenInquiry={() => handleOpenInquiry('Executive Diary')}
       />
 
-
       {/* Main Experience Flow (Above background animations) */}
       <main className="flex-1 relative z-10">
         <HeroSection
-
           onExploreProducts={() => handleScrollToSection('products')}
           onOpenInquiry={() => handleOpenInquiry('Executive Diary')}
         />
@@ -64,6 +57,14 @@ export default function App() {
         <BookSectionReveal>
           <AboutSection />
         </BookSectionReveal>
+
+        {/* FROM IDEA TO DIARY: 6-Stage Process Flow */}
+        <BookSectionReveal delayMs={50}>
+          <ProcessSection
+            onStartRequirement={() => handleScrollToSection('customize')}
+          />
+        </BookSectionReveal>
+
 
         {/* 2025 Sorsons Diaries Collection Showcase with Book-Open Reveal */}
         <BookSectionReveal delayMs={100}>
