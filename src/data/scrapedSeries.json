@@ -1,0 +1,224 @@
+[
+  {
+    "id": "mega-series",
+    "name": "Mega Series",
+    "desc": "One day in a page | Saturday & Sunday Clubbed | 8 1/4 \" X 10 1/2 \" (approx.)",
+    "innerImage": "images/megaseries/megainner1.png",
+    "covers": [
+      "images/megaseries/1.webp",
+      "images/megaseries/2.webp",
+      "images/megaseries/3.webp",
+      "images/megaseries/4.webp"
+    ]
+  },
+  {
+    "id": "ojas-series",
+    "name": "Ojas Series",
+    "desc": "One day to a page (Sunday Separate) | With proverbs & colour design | laminated cover and hard bound binding | 7 \" X 9 1/2 \" (approx.)",
+    "innerImage": "images/ojasseries/ojasinner.png",
+    "covers": [
+      "images/ojasseries/2.webp"
+    ]
+  },
+  {
+    "id": "ojas-rainbow-series",
+    "name": "Ojas Rainbow Series",
+    "desc": "One Day to a page (Sunday separate) | with proverbs & 12 Colourful Planners, Colour Design laminated cover hard bound binding. | 7 \" X 9 1/2 \" (approx.)",
+    "innerImage": "images/executiveseries/executiveinner.png",
+    "covers": [
+      "images/ojasrainbow/1.webp"
+    ]
+  },
+  {
+    "id": "executive-series",
+    "name": "Executive Series",
+    "desc": "Two days to a page | Saturday & Sunday Clubbed | 7 \" X 9 1/2 \" (approx.)",
+    "innerImage": "images/executiveseries/executiveinner.png",
+    "covers": [
+      "images/executiveseries/2.webp"
+    ]
+  },
+  {
+    "id": "global-series",
+    "name": "Global Series",
+    "desc": "One day in a page | Saturday & Sunday Clubbed | 7 \" X 9 1/2 \" (approx.)",
+    "innerImage": "images/globalseries/globalinner.png",
+    "covers": [
+      "images/globalseries/1.webp",
+      "images/globalseries/2.webp",
+      "images/globalseries/3.webp",
+      "images/globalseries/4.webp",
+      "images/globalseries/5.webp",
+      "images/globalseries/6.webp"
+    ]
+  },
+  {
+    "id": "angel-series",
+    "name": "Angel Series",
+    "desc": "One day in a page (Sunday Seperate) | 5 1/4 \" X 8 1/4 \" (approx.)",
+    "innerImage": "images/angelseries/angelinner.png",
+    "covers": [
+      "images/angelseries/1.webp"
+    ]
+  },
+  {
+    "id": "achiever-series",
+    "name": "Achiever Series",
+    "desc": "One day in a page | 5 1/4 \" X 8 1/4 \" (approx.)",
+    "innerImage": "images/achieverseries/archieverinner.png",
+    "covers": [
+      "images/achieverseries/1.webp"
+    ]
+  },
+  {
+    "id": "agasthya-series",
+    "name": "Agasthya Series",
+    "desc": "One day in a page | Saturday & Sunday Clubed | 5 1/4 \" X 8 1/4 \" (approx.)",
+    "innerImage": "images/agasthyaseries/agasthyainner.png",
+    "covers": [
+      "images/agasthyaseries/2.webp",
+      "images/agasthyaseries/1.webp",
+      "images/agasthyaseries/3.webp",
+      "images/agasthyaseries/4.webp"
+    ]
+  },
+  {
+    "id": "prince-series",
+    "name": "Prince Series",
+    "desc": "Two days to a page | Saturday & Sunday Clubed | 5 1/4 \" X 8 1/4 \" (approx.)",
+    "innerImage": "images/princeseries/princeinner.png",
+    "covers": [
+      "images/princeseries/1.webp",
+      "images/corporateseries/corporateinner.png",
+      "images/corporateseries/1.webp",
+      "images/corporateseries/2.webp"
+    ]
+  },
+  {
+    "id": "prestige-series",
+    "name": "Prestige Series",
+    "desc": "One days in a page | Saturday & Sunday Clubed | 4 3/4 \" X 6 7/8 \" (approx.)",
+    "innerImage": "images/prestigeseries/prestigeinner.png",
+    "covers": [
+      "images/prestigeseries/1.webp"
+    ]
+  },
+  {
+    "id": "companion-series",
+    "name": "Companion Series",
+    "desc": "Two days in a page | Saturday & Sunday Clubed | 4 3/4 \" X 6 3/4 \" (approx.)",
+    "innerImage": "images/companionseries/companioninner.png",
+    "covers": [
+      "images/companionseries/1.webp"
+    ]
+  },
+  {
+    "id": "monthly-planner",
+    "name": "Monthly Planner",
+    "desc": "",
+    "innerImage": "images/monthlypanner/monthlyinner1.png",
+    "covers": [
+      "images/monthlypanner/1.webp",
+      "images/monthlypanner/monthlyinner2.png",
+      "images/monthlypanner/2.webp"
+    ]
+  },
+  {
+    "id": "noble-series",
+    "name": "Noble Series",
+    "desc": "One day in a page | Sunday Seperate | 5 1/4 \" X 8 1/4 \" (approx.)",
+    "innerImage": "images/nobleseries/nobleinner.png",
+    "covers": [
+      "images/nobleseries/1.webp"
+    ]
+  },
+  {
+    "id": "nellai-series",
+    "name": "Nellai Series",
+    "desc": "One day in a page | Sunday Seperate | 7 \" X 9 1/2 \" (approx.)",
+    "innerImage": "images/nellaiseries/nellaiinner.png",
+    "covers": [
+      "images/nellaiseries/1.webp"
+    ]
+  },
+  {
+    "id": "journel-series",
+    "name": "Journel Series",
+    "desc": "",
+    "innerImage": "images/journelseries/journelinner1.png",
+    "covers": [
+      "images/journelseries/1.webp",
+      "images/journelseries/journelinner2.png",
+      "images/journelseries/2.webp"
+    ]
+  },
+  {
+    "id": "spiral-series",
+    "name": "Spiral Series",
+    "desc": "",
+    "innerImage": "images/spiralseries/spiralinner1.png",
+    "covers": [
+      "images/spiralseries/1.webp",
+      "images/spiralseries/spiralinner2.png",
+      "images/spiralseries/2.webp"
+    ]
+  },
+  {
+    "id": "platinum-mega-series",
+    "name": "Platinum Mega Series",
+    "desc": "Platinum Series (Mega) 501 | 8 1/4 \" X 10 1/2 \" (approx.) | One day in a page Sat & Sunday Clubbed",
+    "innerImage": "images/platinumseries/megaseries/megainner.png",
+    "covers": [
+      "images/platinumseries/megaseries/501.png"
+    ]
+  },
+  {
+    "id": "platinum-leather-ojas-rainbow",
+    "name": "Platinum Leather (Ojas Rainbow)",
+    "desc": "Platinum Leather (Ojas Rainbow) 517,518,519,520,521 | 7\" X 9 1/2 \" (approx.) | One day in a page,Sunday separate with proverbs & 12 Colourful Planners, with Leather Finish and Month wise die cut hard bound binding.",
+    "innerImage": "images/agasthyaseries/agasthyainner.png",
+    "covers": [
+      "images/platinumseries/rainbowojaseries/1.webp"
+    ]
+  },
+  {
+    "id": "platinum-leather-ojas",
+    "name": "Platinum Leather (Ojas)",
+    "desc": "Platinum Series (Ojas) 502,503,504,505 | One day to a page (Sunday Seperate) | with proverbs & Leather Finish | with month wise Die Cut",
+    "innerImage": "images/platinumseries/ojasseries/ojasinner1.png",
+    "covers": [
+      "images/platinumseries/ojasseries/1.webp",
+      "images/platinumseries/ojasseries/ojasinner2.png",
+      "images/platinumseries/ojasseries/2.webp"
+    ]
+  },
+  {
+    "id": "platinum-global-series",
+    "name": "Platinum Global Series",
+    "desc": "Platinum Series (Global) 510,511,512,513 | 7 \" X 9 1/2 \" (approx.) | One day in a page (Sat & Sunday Clubbed) | Leather Finish with month wise Die Cut",
+    "innerImage": "images/platinumseries/globalseries/globalinner1.png",
+    "covers": [
+      "images/platinumseries/globalseries/1.webp",
+      "images/platinumseries/globalseries/globalinner2.png",
+      "images/platinumseries/globalseries/2.webp"
+    ]
+  },
+  {
+    "id": "platinum-corporate-series",
+    "name": "Platinum Corporate Series",
+    "desc": "Platinum Series (Corporate) 523,524 | 6 1/8 \" X 8 1/4 \" (approx.) | One day in a page Sat & Sunday Clubbed | with Leather Finish",
+    "innerImage": "images/platinumseries/corporateseries/corporateinner.png",
+    "covers": [
+      "images/platinumseries/corporateseries/1.webp"
+    ]
+  },
+  {
+    "id": "platinum-journels-series",
+    "name": "Platinum Journels Series",
+    "desc": "Platinum Series (Journels) 526,527,528,529,530,531,532 | 6 1/8 \" X 8 1/4 \" (approx.) | to use all time | with Leather Finish",
+    "innerImage": "images/platinumseries/journelseries/journelinner.png",
+    "covers": [
+      "images/platinumseries/journelseries/1.webp"
+    ]
+  }
+]

@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   Sparkles,
+  ArrowRight,
   ArrowUpRight,
+  Search,
+  BookOpen,
+  Calendar,
   Layers,
+  CheckCircle2,
+  X,
+  FileText,
 } from 'lucide-react'
-
-interface ProductItem {
-  id: string
-  name: string
-  subtitle: string
-  category: string
-  binding: string
-  cover: string
-  spine: string
-  isPopular?: boolean
-  image: string
-  tag: string
-}
+import {
+  SORSONS_PRODUCTS,
+  PRODUCT_CATEGORIES,
+} from '../data/sorsonsProducts'
 
 interface CollectionsShowcaseProps {
   onSelectProduct: (productName: string) => void
@@ -27,311 +26,303 @@ export const CollectionsShowcase: React.FC<CollectionsShowcaseProps> = ({
   onSelectProduct,
   onInspect3D,
 }) => {
-  const [activeCategory, setActiveCategory] = useState<string>('All')
+  const [activeCategory, setActiveCategory] = useState<string>('all')
+  const [searchQuery, setSearchQuery] = useState<string>('')
+  const navigate = useNavigate()
 
-  const products: ProductItem[] = [
-    {
-      id: 'sorsons-pastel-marble',
-      name: 'Better Days Ahead Pastel Diary',
-      subtitle: 'Liquid-Marble Pastel Gradient with Gold Foil Embossing & Pink Elastic Band',
-      category: 'Popular',
-      binding: 'Hard Bound with 180° Lay-Flat Machine Binding',
-      cover: 'Swirling Liquid-Marble Soft-Touch PU',
-      spine: 'Square Spine with Gilded Gold Foil Page Edges',
-      isPopular: true,
-      image: '/images/pastel_marble_diary.jpg',
-      tag: '✨ 2025 Dreamer Edition',
-    },
-    {
-      id: 'sorsons-emerald-botanical',
-      name: 'Botanical Emerald Floral Journal',
-      subtitle: 'Rich Emerald Vegan Leather with Gold Foil Floral Line Art & Elastic Band',
-      category: 'Corporate',
-      binding: 'Section Sewn Hard Bound',
-      cover: 'Forest Emerald Vegan Leather with Floral Line Art',
-      spine: 'Curved Spine with Silk Bookmark Ribbon & Medallion',
-      isPopular: true,
-      image: '/images/emerald_botanical_diary.jpg',
-      tag: 'Botanical Gold Foil',
-    },
-    {
-      id: 'sorsons-dreamy-trio',
-      name: 'Dreamy Trio Collector Edition',
-      subtitle: 'Three Iconic Formats: Swirling Pastel Marble, Matte Black & Emerald Floral',
-      category: 'Popular',
-      binding: 'Multi-Format Collector Boxed Set',
-      cover: 'Assorted Premium Vegan Leather & Soft-Touch PU',
-      spine: 'Curved and Square Spines with Elastic Closures',
-      isPopular: true,
-      image: '/images/dreamy_hero_diaries.jpg',
-      tag: 'Collector Set',
-    },
-    {
-      id: 'sorsons-outline-celestial',
-      name: 'Celestial Colorful Outline Diary',
-      subtitle: 'Vibrant Sunset Gradient with Gold Wireframe Mandala & Multi-Ribbons',
-      category: 'Popular',
-      binding: 'Section Sewn Deluxe Hard Bound',
-      cover: 'Vibrant Multi-Hue Foil Stamped Soft-Touch PU',
-      spine: 'Curved Spine with 4-Color Silk Bookmark Ribbons',
-      isPopular: true,
-      image: '/images/outline_diary.jpg',
-      tag: 'Colorful Outline Ed.',
-    },
+  // Filter products based on active category & search query
+  const filteredProducts = useMemo(() => {
+    return SORSONS_PRODUCTS.filter((product) => {
+      const matchesCategory =
+        activeCategory === 'all' || product.category === activeCategory
+      const query = searchQuery.toLowerCase().trim()
+      const matchesSearch =
+        !query ||
+        product.name.toLowerCase().includes(query) ||
+        product.sizeImperial.toLowerCase().includes(query) ||
+        product.layout.toLowerCase().includes(query) ||
+        product.coverMaterial.toLowerCase().includes(query) ||
+        product.tag.toLowerCase().includes(query)
 
-    {
-      id: 'sorsons-creative-canvas',
-      name: 'Creative Canvas Open Diary',
-      subtitle: 'Lay-Flat Layout with Colorful Calligraphy & 6-Color Ribbons',
-      category: 'Hard Bound',
-      binding: 'Lay-Flat 180° Machine Binding',
-      cover: 'Pearl White Texture with Multi-Color Ribbon Set',
-      spine: 'Flexible Lay-Flat Spine with Gold Edges',
-      isPopular: true,
-      image: '/images/open_outline_diary.jpg',
-      tag: 'Artistic Open Book',
-    },
-    {
-      id: 'sorsons-executive',
-      name: 'Executive Diary',
-      subtitle: 'Luxury Italian Leatherette with Gold Foil Stamping',
-      category: 'Popular',
-      binding: 'Section Sewn Hard Bound',
-      cover: 'Imported Premium Leatherette',
-      spine: 'Curved Spine with Ribbon Bookmark',
-      isPopular: true,
-      image: '/images/executive_diary.jpg',
-      tag: 'Flagship 2025',
-    },
+      return matchesCategory && matchesSearch
+    })
+  }, [activeCategory, searchQuery])
 
-    {
-      id: 'sorsons-majestic',
-      name: 'Majestic Diary',
-      subtitle: 'Quality PVC Foam Hard Bound Binding',
-      category: 'Hard Bound',
-      binding: 'Heavy Duty Hard Bound Binding',
-      cover: 'Quality PVC Foam with Geometric Gold Foil',
-      spine: 'Square Spine with Edge Gilding',
-      isPopular: true,
-      image: '/images/majestic_diary.jpg',
-      tag: 'Gen-Z Aesthetic',
-    },
-    {
-      id: 'sorsons-spiral',
-      name: 'Spiral Pro Corporate Diary',
-      subtitle: 'Metallic Double Wiro Spine with Frosted Finish',
-      category: 'Spiral',
-      binding: 'Twin Wire-O Spiral Binding',
-      cover: 'Frosted Polypropylene & Hard Board',
-      spine: 'Metallic Spiral Rose Gold & Silver',
-      isPopular: true,
-      image: '/images/spiral_diary.jpg',
-      tag: 'Bestseller',
-    },
-    {
-      id: 'sorsons-corporate',
-      name: 'Corporate Diary',
-      subtitle: 'Imported PCP Cover and Curved Spine',
-      category: 'Corporate',
-      binding: 'Deluxe Hard Bound Binding',
-      cover: 'Imported PCP Textured Cover',
-      spine: 'Curved Ergonomic Spine',
-      isPopular: true,
-      image: '/images/executive_diary.jpg',
-      tag: 'Corporate Essential',
-    },
-    {
-      id: 'sorsons-mega',
-      name: 'Mega Diary',
-      subtitle: 'Expanded Page Count for In-Depth Annual Logs',
-      category: 'Popular',
-      binding: 'Reinforced Thread Bound',
-      cover: 'Dual-Tone Thermal PU Leather',
-      spine: 'Flexible Rounded Spine',
-      isPopular: true,
-      image: '/images/majestic_diary.jpg',
-      tag: 'Comprehensive',
-    },
-    {
-      id: 'sorsons-angel',
-      name: 'Angel Diary',
-      subtitle: 'Colour Design Laminated Cover & Hard Bound Binding',
-      category: 'Laminated',
-      binding: 'Hard Bound Machine Binding',
-      cover: 'Vibrant Multi-Colour Laminated Art Cover',
-      spine: 'Standard Square Spine',
-      image: '/images/majestic_diary.jpg',
-      tag: 'Artistic Finish',
-    },
-    {
-      id: 'sorsons-telephone-index',
-      name: 'Telephone Index Diary',
-      subtitle: 'Thumb-Cut Indexed Layout for Contacts & Records',
-      category: 'Laminated',
-      binding: 'Hard Bound with A-Z Mylar Tabs',
-      cover: 'Colour Design Laminated High Gloss',
-      spine: 'Durable Book Spine',
-      image: '/images/spiral_diary.jpg',
-      tag: 'Indexed System',
-    },
-    {
-      id: 'sorsons-ojas',
-      name: 'Ojas Diary',
-      subtitle: 'Colour Design Laminated Cover & Hard Bound Binding',
-      category: 'Laminated',
-      binding: 'Precision Hard Bound Binding',
-      cover: 'High Gloss Thermal Lamination',
-      spine: 'Curved Spine with Golden Silk Ribbon',
-      image: '/images/executive_diary.jpg',
-      tag: 'Premium Series',
-    },
-    {
-      id: 'sorsons-embassy',
-      name: 'Embassy Diary',
-      subtitle: 'Diplomatic Elegance with Subtle Texture & Gilded Foil',
-      category: 'Corporate',
-      binding: 'Section Sewn Hard Bound',
-      cover: 'Rich Textured Linen/Leatherette',
-      spine: 'Embossed Curved Spine',
-      image: '/images/majestic_diary.jpg',
-      tag: 'Executive Choice',
-    },
-    {
-      id: 'sorsons-premium',
-      name: 'Premium Diary',
-      subtitle: 'Sensational New Range with Custom Client Embellishments',
-      category: 'Hard Bound',
-      binding: 'Deluxe Hard Bound Binding',
-      cover: 'Embossed Metallic Multi-Colour Finish',
-      spine: 'Smooth Rounded Spine with Headband',
-      image: '/images/spiral_diary.jpg',
-      tag: 'Customizable',
-    },
-  ]
-
-  const categories = ['All', 'Popular', 'Corporate', 'Hard Bound', 'Spiral', 'Laminated']
-
-  const filteredProducts = activeCategory === 'All'
-    ? products
-    : products.filter((p) => p.category === activeCategory)
+  const handleNavigateToProducts = (seriesId?: string) => {
+    if (seriesId) {
+      navigate(`/products#series-${seriesId}`)
+    } else {
+      navigate('/products')
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
-    <section id="products" className="py-16 md:py-24 bg-[#faf9f5]/75 backdrop-blur-[2px] border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="products"
+      className="py-16 md:py-24 bg-[#faf9f5]/85 backdrop-blur-sm border-b border-[#e8e1d5] relative"
+    >
+      {/* Decorative Warm Ambient Glow */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-amber-100/40 rounded-full blur-3xl pointer-events-none -z-10"
+      />
 
-        
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-100 border border-amber-300 text-amber-900 text-xs font-semibold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100/90 border border-amber-300/80 text-amber-900 text-xs font-semibold uppercase tracking-wider mb-3">
               <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-              <span>Sorsons 2025 Edition Collection</span>
+              <span>Official 2025 Sorsons Catalog</span>
+              <span className="w-1 h-1 rounded-full bg-amber-500" />
+              <span className="font-mono text-[11px] text-amber-800">22 Authentic Series</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 font-display tracking-tight">
-              Sensational New Range <br />
-              <span className="text-amber-600">Of Premium Diaries</span>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 font-display tracking-tight leading-tight">
+              Sivakasi Masterpiece Diaries <br />
+              <span className="text-amber-700 font-serif italic font-normal">
+                Crafted for Discerning Corporate Desks
+              </span>
             </h2>
+
+            <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl font-sans">
+              Manufactured in Sivakasi — every layout, metric size, and imported thermal leatherette binding option for 2025.
+            </p>
           </div>
 
-          {/* Category Filter Pills: rounded-md, no shadows */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-white p-1 rounded-md border border-slate-200">
-            {categories.map((cat) => (
+          {/* Search & Direct Link to Full Products Page */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="relative">
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search series or sizes (e.g. 8 ¼)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full sm:w-64 pl-9 pr-8 py-2 text-xs rounded-lg bg-white border border-[#e2d8c9] text-slate-800 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  aria-label="Clear Search"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+
+            <button
+              onClick={() => handleNavigateToProducts()}
+              className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold shadow-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+            >
+              <span>View Full Products Page</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Category Filter Pills */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 scrollbar-none">
+          {PRODUCT_CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat.id
+            return (
               <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-3 py-1 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
-                  activeCategory === cat
-                    ? 'bg-amber-500 text-slate-950 font-bold'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap flex items-center gap-2 ${
+                  isActive
+                    ? 'bg-amber-500 text-slate-950 font-bold shadow-sm'
+                    : 'bg-white/90 text-slate-700 hover:text-slate-950 hover:bg-white border border-[#e5ded1]'
                 }`}
               >
-                {cat}
+                <span>{cat.shortLabel}</span>
+                <span
+                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                    isActive ? 'bg-amber-950 text-amber-100' : 'bg-slate-100 text-slate-500'
+                  }`}
+                >
+                  {cat.count}
+                </span>
               </button>
-            ))}
-          </div>
+            )
+          })}
         </div>
 
-        {/* Products Grid: rounded-md, no shadows */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white border border-slate-200 hover:border-amber-400 rounded-md transition-colors overflow-hidden flex flex-col justify-between"
+        {/* Products Grid */}
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-16 bg-white/60 rounded-xl border border-dashed border-[#d9cebe]">
+            <BookOpen className="w-10 h-10 text-amber-700/50 mx-auto mb-3" />
+            <h3 className="text-lg font-bold text-slate-900">No matching series found</h3>
+            <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+              We couldn't find any diary series matching "{searchQuery}".
+            </p>
+            <button
+              onClick={() => {
+                setSearchQuery('')
+                setActiveCategory('all')
+              }}
+              className="mt-4 px-4 py-1.5 rounded-md bg-amber-500 text-slate-950 text-xs font-bold hover:bg-amber-600 cursor-pointer"
             >
-              <div>
-                {/* Product Image */}
-                <div className="relative h-56 sm:h-60 overflow-hidden bg-slate-100">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                  />
+              Reset Filters
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                id={`series-${product.id}`}
+                className="bg-white/95 rounded-xl border border-[#e4dcd0] hover:border-amber-400 hover:shadow-lg hover:shadow-amber-900/5 transition-all duration-200 overflow-hidden flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Card Visual Header */}
+                  <div className="relative h-56 sm:h-60 overflow-hidden bg-slate-50 border-b border-[#eee7dc]">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
 
-                  {/* Top Badges: rounded-md, no shadows */}
-                  <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
-                    <span className="px-2 py-0.5 rounded-md bg-white/95 text-amber-800 border border-slate-200 text-[11px] font-mono font-bold">
-                      {product.tag}
-                    </span>
-                    {product.isPopular && (
-                      <span className="px-2 py-0.5 rounded-md bg-amber-500 text-slate-950 text-[10px] font-extrabold uppercase tracking-wide">
-                        Popular
+                    {/* Top Status Tags */}
+                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                      <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-sm text-amber-900 border border-amber-200/80 text-[11px] font-mono font-bold shadow-xs">
+                        {product.sizeImperial}
                       </span>
-                    )}
+                      <div className="flex items-center gap-1.5">
+                        {product.dieCutTabs && (
+                          <span className="px-2 py-0.5 rounded-md bg-amber-500 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider shadow-xs">
+                            Die-Cut Tabs
+                          </span>
+                        )}
+                        {product.isPopular && (
+                          <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white text-[10px] font-bold uppercase tracking-wider">
+                            Popular
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Quick 3D / Featured Inspection Trigger */}
+                    <button
+                      onClick={onInspect3D}
+                      className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-800 text-xs font-mono flex items-center gap-1.5 hover:bg-amber-50 hover:text-amber-800 cursor-pointer shadow-xs transition-colors"
+                      title="Inspect 3D Diary Showcase"
+                    >
+                      <Layers className="w-3.5 h-3.5 text-amber-600" />
+                      <span>3D Preview</span>
+                    </button>
                   </div>
 
-                  {/* Featured Showcase Button */}
+                  {/* Body Content */}
+                  <div className="p-5 space-y-3">
+                    <div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">
+                          {product.categoryLabel}
+                        </span>
+                        <span className="text-[10px] text-slate-500 font-mono">
+                          {product.sizeMetric}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-950 font-display mt-0.5 group-hover:text-amber-900 transition-colors">
+                        {product.name}
+                      </h3>
+                      <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed">
+                        {product.authenticDescription}
+                      </p>
+                    </div>
+
+                    {/* Specifications List Table */}
+                    <div className="space-y-1.5 pt-3 border-t border-[#f0eae0] text-xs">
+                      <div className="flex items-center justify-between">
+                        <span className="text-slate-500 flex items-center gap-1">
+                          <Calendar className="w-3 h-3 text-amber-600" />
+                          <span>Page Layout:</span>
+                        </span>
+                        <span className="text-slate-800 font-medium text-right font-mono text-[11px]">
+                          {product.pageFrequency} • {product.weekendStyle}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <span className="text-slate-500 flex items-center gap-1">
+                          <BookOpen className="w-3 h-3 text-amber-600" />
+                          <span>Cover Material:</span>
+                        </span>
+                        <span className="text-slate-800 font-medium text-right max-w-[55%] truncate">
+                          {product.coverMaterial}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <span className="text-slate-500 flex items-center gap-1">
+                          <FileText className="w-3 h-3 text-amber-600" />
+                          <span>Binding Type:</span>
+                        </span>
+                        <span className="text-slate-800 font-medium text-right max-w-[55%] truncate">
+                          {product.binding}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Key Feature Highlight Pill */}
+                    <div className="pt-2">
+                      <div className="text-[11px] text-slate-600 bg-amber-50/80 rounded-md p-2 border border-amber-200/60 flex items-start gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                        <span className="line-clamp-1">{product.features[0]}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Bottom CTA Actions - Direct navigation without popup modal */}
+                <div className="p-5 pt-0 grid grid-cols-2 gap-2">
                   <button
-                    onClick={onInspect3D}
-                    className="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-md bg-white/95 border border-slate-200 text-slate-800 text-xs font-mono flex items-center gap-1.5 hover:text-amber-700 cursor-pointer"
+                    onClick={() => handleNavigateToProducts(product.id)}
+                    className="py-2.5 px-3 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-semibold border border-slate-200 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    <Layers className="w-3.5 h-3.5 text-amber-600" />
-                    <span>Featured</span>
+                    <span>View on Products Page</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
 
-                </div>
-
-                {/* Specs */}
-                <div className="p-5 space-y-3">
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-950 font-display">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-slate-600 mt-0.5 line-clamp-2">
-                      {product.subtitle}
-                    </p>
-                  </div>
-
-                  <div className="space-y-1.5 pt-2 border-t border-slate-100 text-xs">
-                    <div className="flex items-center justify-between text-slate-500">
-                      <span>Cover Material:</span>
-                      <span className="text-slate-800 font-medium text-right">{product.cover}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-slate-500">
-                      <span>Binding Style:</span>
-                      <span className="text-slate-800 font-medium text-right">{product.binding}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-slate-500">
-                      <span>Spine Detail:</span>
-                      <span className="text-slate-800 font-medium text-right">{product.spine}</span>
-                    </div>
-                  </div>
+                  <button
+                    onClick={() => onSelectProduct(product.name)}
+                    className="py-2.5 px-3 rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition-colors flex items-center justify-center gap-1 cursor-pointer shadow-xs"
+                  >
+                    <span>Quote Order</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </div>
+            ))}
+          </div>
+        )}
 
-              {/* Action Button: rounded-md, no shadows */}
-              <div className="p-5 pt-0">
-                <button
-                  onClick={() => onSelectProduct(product.name)}
-                  className="w-full py-2.5 rounded-md bg-slate-100 hover:bg-amber-500 hover:text-slate-950 text-slate-800 text-xs font-bold transition-colors border border-slate-200 hover:border-amber-500 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <span>Request Custom Printing Quote</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          ))}
+        {/* View All Products Page CTA Banner */}
+        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-amber-50 via-white to-amber-50 border border-amber-200 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center md:text-left">
+            <span className="font-handwriting text-xl text-amber-700">
+              Dedicated 2025 Sorsons Catalog Page
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900 font-display">
+              Inspect Authentic Inner Page Formats & Full Cover Collections
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl">
+              Visit the dedicated products route to view all 22 series with their real inner page layouts,
+              Sunday separate formats, and complete cover design finishes scraped from the Sivakasi mill.
+            </p>
+          </div>
+
+          <button
+            onClick={() => handleNavigateToProducts()}
+            className="shrink-0 px-6 py-3 rounded-xl bg-slate-950 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-md hover:shadow-lg flex items-center gap-2 cursor-pointer"
+          >
+            <span>Open Dedicated Products Route</span>
+            <ArrowRight className="w-4 h-4 text-amber-400" />
+          </button>
         </div>
-
       </div>
     </section>
   )
