@@ -121,7 +121,7 @@ export const AboutSection: React.FC = () => {
 
       {/* Main Container */}
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-24">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 border border-amber-200/90 text-amber-950 text-xs font-semibold tracking-wide backdrop-blur-md shadow-xs transition-transform duration-300 hover:scale-[1.02]">
@@ -168,7 +168,7 @@ export const AboutSection: React.FC = () => {
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-amber-100/50 via-rose-100/30 to-transparent rounded-full blur-2xl pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
+
             {/* Left: Photorealistic Heidelberg Offset Machine Showcase */}
             <div className="lg:col-span-7 relative rounded-2xl overflow-hidden shadow-sm bg-slate-100 group/img">
               <img
@@ -291,17 +291,15 @@ export const AboutSection: React.FC = () => {
                 <div
                   key={pillar.num}
                   onClick={() => setActivePillar(idx)}
-                  className={`relative p-6 rounded-3xl transition-all duration-300 cursor-pointer flex flex-col justify-between group backdrop-blur-xl ${
-                    isActive
-                      ? 'bg-white border-2 border-amber-500 ring-4 ring-amber-400/20 shadow-xl -translate-y-1.5'
-                      : 'bg-white/80 border border-amber-200/70 hover:bg-white hover:border-amber-400 hover:-translate-y-1 shadow-sm'
-                  }`}
+                  className={`relative p-6 rounded-3xl transition-all duration-300 cursor-pointer flex flex-col justify-between group backdrop-blur-xl ${isActive
+                    ? 'bg-white border-2 border-amber-500 ring-4 ring-amber-400/20 shadow-xl -translate-y-1.5'
+                    : 'bg-white/80 border border-amber-200/70 hover:bg-white hover:border-amber-400 hover:-translate-y-1 shadow-sm'
+                    }`}
                 >
                   {/* Top Color Accent Line */}
                   <div
-                    className={`absolute top-0 left-6 right-6 h-1 rounded-b-full bg-gradient-to-r ${pillar.accentColor} transition-opacity duration-300 ${
-                      isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                    }`}
+                    className={`absolute top-0 left-6 right-6 h-1 rounded-b-full bg-gradient-to-r ${pillar.accentColor} transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                      }`}
                   />
 
                   <div>
@@ -375,7 +373,7 @@ export const AboutSection: React.FC = () => {
         </div>
 
         {/* 4 Printing Precision Pillars: interactive cards with icon rotation */}
-        <div>
+        {/* <div>
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h3 className="text-xl sm:text-2xl font-black text-slate-950 font-display tracking-tight">
               Crafted With Sivakasi Precision Engineering
@@ -415,7 +413,7 @@ export const AboutSection: React.FC = () => {
               )
             })}
           </div>
-        </div>
+        </div> */}
 
       </div>
     </section>

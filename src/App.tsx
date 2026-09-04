@@ -34,15 +34,6 @@ function HomePage({
         <AboutSection />
       </BookSectionReveal>
 
-      <BookSectionReveal delayMs={50}>
-        <ProcessSection
-          onStartRequirement={() => {
-            const el = document.getElementById('customize')
-            if (el) el.scrollIntoView({ behavior: 'smooth' })
-          }}
-        />
-      </BookSectionReveal>
-
       <BookSectionReveal delayMs={75}>
         <CustomizeSection
           onOpenInquiry={(details?: string) => onOpenInquiry(details || 'Customized Diary')}
@@ -54,6 +45,15 @@ function HomePage({
           onSelectProduct={(name) => onOpenInquiry(name)}
           onInspect3D={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+        />
+      </BookSectionReveal>
+
+      <BookSectionReveal delayMs={50}>
+        <ProcessSection
+          onStartRequirement={() => {
+            const el = document.getElementById('customize')
+            if (el) el.scrollIntoView({ behavior: 'smooth' })
           }}
         />
       </BookSectionReveal>
@@ -84,9 +84,8 @@ export default function App() {
       {/* Global Background Image (Stationery line art across Home page) */}
       <div
         aria-hidden="true"
-        className={`fixed inset-0 pointer-events-none -z-10 bg-[url('/images/diary_outline_bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed transition-opacity duration-500 ${
-          isProducts ? 'opacity-0' : 'opacity-45'
-        }`}
+        className={`fixed inset-0 pointer-events-none -z-10 bg-[url('/images/diary_outline_bg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed transition-opacity duration-500 ${isProducts ? 'opacity-0' : 'opacity-45'
+          }`}
       />
 
       {/* Top Navigation Bar with Direct React Router DOM Navigation */}

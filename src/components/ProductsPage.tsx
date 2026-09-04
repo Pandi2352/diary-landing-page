@@ -118,12 +118,28 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   }, [enrichedSeries, activeCategory, searchQuery])
 
   return (
-    <div className="min-h-screen bg-[#faf9f5] text-slate-900 font-sans selection:bg-amber-400 selection:text-slate-950 pb-24">
-      {/* Top Hero Banner with Background Image */}
-      <div className="pt-24 sm:pt-28 pb-12 sm:pb-16 border-b border-slate-200 relative overflow-hidden bg-[url('/images/products_bg.jpg')] bg-cover bg-right sm:bg-center bg-no-repeat">
-        {/* Soft gradient wash from the left so text is crystal clear while the diary & fountain pen sketches show through on the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#faf9f5]/98 via-[#faf9f5]/85 to-white/30 pointer-events-none" />
+    <div className="min-h-screen text-slate-900 font-sans selection:bg-amber-400 selection:text-slate-950 pb-24 relative">
+      {/* 
+        LIGHT COLORED STATIONERY BACKGROUND IMAGE:
+        Subtle ivory parchment texture with delicate golden line art sketches of open diaries, 
+        quill, guilloche watermarks, and handcrafted collection seals covering full width.
+      */}
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 pointer-events-none -z-10 bg-[url('/images/light_series_bg.jpg')] bg-cover bg-center bg-fixed bg-no-repeat opacity-95"
+      />
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 pointer-events-none -z-10 bg-gradient-to-b from-[#fdfbf7]/40 via-transparent to-[#fdfbf7]/50"
+      />
 
+      {/* Top Hero Banner - Edge-to-Edge Full Width with Dedicated Luxury Stationery Background */}
+      <div className="pt-24 sm:pt-28 pb-10 sm:pb-14 border-b border-amber-200/80 relative overflow-hidden bg-[url('/images/products_hero_banner_bg.jpg')] bg-cover bg-center">
+        {/* Luminous warm overlay for crystal-clear readability while displaying luxury stationery background */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-[#fdfbf7]/88 via-white/82 to-[#fdfbf7]/88 backdrop-blur-[1px] pointer-events-none"
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumbs & Back Button */}
           <div className="flex items-center justify-between gap-4 mb-6">
@@ -132,7 +148,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 navigate('/')
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/95 border border-slate-200 text-slate-700 hover:text-slate-950 hover:bg-white text-xs font-semibold transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white border border-slate-200 text-slate-700 hover:text-slate-950 hover:bg-slate-50 text-xs font-semibold transition-colors cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4 text-amber-700" />
               <span>Back to Home</span>
@@ -148,7 +164,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           {/* Hero Section Info */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-100/95 border border-amber-300 text-amber-950 text-xs font-semibold uppercase tracking-wider mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-100 border border-amber-300 text-amber-950 text-xs font-semibold uppercase tracking-wider mb-3">
                 <Sparkles className="w-3.5 h-3.5 text-amber-700" />
                 <span>Direct Sivakasi Factory Production Catalog</span>
                 <span className="w-1 h-1 rounded-md bg-amber-500" />
@@ -162,7 +178,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 </span>
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-700 mt-3 max-w-3xl leading-relaxed font-sans font-medium">
+              <p className="text-sm sm:text-base text-slate-700 mt-3 max-w-4xl leading-relaxed font-sans font-medium">
                 Explore the complete official catalog manufactured at Sutharsan Offset Printers in Sivakasi.
                 Inspect printed inner page formats (Sunday separate, Sat & Sun clubbed,
                 color planners) alongside cover collections, imported PU textures, and month die-cut tabs.
@@ -173,7 +189,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             <div className="flex sm:flex-row flex-col items-stretch sm:items-center gap-3 shrink-0">
               <a
                 href="tel:+919952424780"
-                className="px-4 py-2.5 rounded-md bg-white/95 border border-slate-200 text-slate-800 hover:text-amber-900 text-xs font-semibold flex items-center justify-center gap-2 transition-colors"
+                className="px-4 py-2.5 rounded-md bg-white border border-slate-200 text-slate-800 hover:text-amber-900 text-xs font-semibold flex items-center justify-center gap-2 transition-colors"
               >
                 <Phone className="w-4 h-4 text-amber-700" />
                 <span>+91 99524 24780</span>
@@ -191,8 +207,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
         </div>
       </div>
 
-      {/* Sticky Filter & Search Toolbar: rounded-md, no shadow */}
-      <div className="sticky top-14 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 py-3">
+      {/* Sticky Filter & Search Toolbar - Centered with balanced side space, rounded-md, no shadow */}
+      <div className="sticky top-14 z-30 bg-white/95 backdrop-blur-md border-b border-amber-200/80 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-3">
           {/* Category Filter Pills: rounded-md, no shadow */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
@@ -202,7 +218,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-md text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
                     isActive
                       ? 'bg-amber-500 text-slate-950 font-bold border border-amber-600'
                       : 'bg-white text-slate-700 hover:text-slate-950 hover:bg-slate-100 border border-slate-200'
@@ -222,7 +238,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           </div>
 
           {/* Search Box: rounded-md */}
-          <div className="relative w-full md:w-72">
+          <div className="relative w-full md:w-80">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
@@ -243,8 +259,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
         </div>
       </div>
 
-      {/* Main Series Showcase List (Inline layout, rounded-md, no shadow) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+      {/* Main Series Showcase List - Centered with balanced side space, rounded-md, no shadow */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         {filteredSeries.length === 0 ? (
           <div className="text-center py-20 bg-white/95 rounded-md border border-dashed border-slate-300">
             <BookOpen className="w-12 h-12 text-amber-600/40 mx-auto mb-3" />
@@ -263,7 +279,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             </button>
           </div>
         ) : (
-          <div className="space-y-12 sm:space-y-16">
+          <div className="space-y-10 sm:space-y-14">
             {filteredSeries.map((series, idx) => {
               const activeCoverIdx = activeCoverPerSeries[series.id] || 0
               const currentCover = series.covers[activeCoverIdx] || series.covers[0]
@@ -272,36 +288,36 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 <section
                   key={series.id}
                   id={`series-${series.id}`}
-                  className="bg-white/95 backdrop-blur-xs rounded-md border border-slate-200 hover:border-amber-400 transition-colors overflow-hidden scroll-mt-28"
+                  className="bg-white/95 backdrop-blur-md rounded-md border border-amber-200/90 hover:border-amber-500 border-t-4 border-t-amber-500 transition-all duration-200 overflow-hidden scroll-mt-28"
                 >
-                  {/* Series Header Bar */}
-                  <div className="p-5 sm:p-6 bg-slate-50/80 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  {/* Series Header Bar - Warm Tinted Header, rounded-md, no shadow */}
+                  <div className="p-5 sm:p-6 bg-gradient-to-r from-amber-50/90 via-white to-amber-50/40 border-b border-amber-200/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                      <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                        <span className="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-900 border border-amber-300 text-[10px] font-bold uppercase tracking-wider font-mono">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className="px-2.5 py-1 rounded-md bg-amber-100 text-amber-950 border border-amber-300 text-xs font-bold uppercase tracking-wider font-mono">
                           {series.categoryLabel}
                         </span>
                         {series.extractedSize && (
-                          <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white text-[10px] font-mono font-bold">
+                          <span className="px-2.5 py-1 rounded-md bg-slate-900 text-amber-300 text-xs font-mono font-bold">
                             {series.extractedSize}
                           </span>
                         )}
                         {series.isDieCut && (
-                          <span className="px-2 py-0.5 rounded-md bg-amber-500 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider">
+                          <span className="px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-xs font-extrabold uppercase tracking-wider">
                             ⚡ Month-Wise Die Cut
                           </span>
                         )}
+                        <span className="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono font-medium">
+                          Series #{series.seriesIndex || idx + 1}
+                        </span>
                       </div>
 
-                      <h2 className="text-2xl sm:text-3xl font-black text-slate-950 font-display tracking-tight flex items-center gap-3">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 font-display tracking-tight flex items-center gap-3">
                         <span>{series.name}</span>
-                        <span className="text-xs font-serif italic text-amber-800 font-normal hidden sm:inline">
-                          Series #{idx + 1}
-                        </span>
                       </h2>
 
                       {series.desc && (
-                        <p className="text-xs sm:text-sm text-slate-600 mt-1 font-mono font-medium">
+                        <p className="text-xs sm:text-sm text-slate-700 mt-1 font-mono font-medium max-w-4xl">
                           {series.desc}
                         </p>
                       )}
@@ -309,6 +325,15 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
                     {/* Action CTA: rounded-md */}
                     <div className="flex items-center gap-2 shrink-0">
+                      <a
+                        href="tel:+919952424780"
+                        className="px-3.5 py-2.5 rounded-md bg-white border border-slate-200 text-slate-700 hover:text-amber-900 hover:bg-amber-50 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                        title="Direct Sivakasi Factory Desk"
+                      >
+                        <Phone className="w-3.5 h-3.5 text-amber-700" />
+                        <span className="hidden sm:inline">Call Press Desk</span>
+                      </a>
+
                       <button
                         onClick={() => onOpenInquiry(series.name)}
                         className="px-5 py-2.5 rounded-md bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
@@ -319,31 +344,31 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                     </div>
                   </div>
 
-                  {/* 2-Column Content Grid: Left Inner Page + Right Cover Variations */}
+                  {/* 2-Column Full-Width Content Grid: Left Inner Page + Right Cover Variations */}
                   <div className="p-5 sm:p-7 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    {/* LEFT COLUMN: Inner Page Layout */}
-                    <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-4">
+                    {/* LEFT COLUMN: Inner Page Layout (lg:col-span-5 xl:col-span-4) */}
+                    <div className="lg:col-span-5 xl:col-span-4 flex flex-col justify-between h-full space-y-4">
                       <div>
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-xs font-bold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
                             <FileText className="w-3.5 h-3.5 text-amber-700" />
                             <span>Inner Page Format & Ruling</span>
                           </span>
-                          <span className="text-[10px] text-slate-400 font-mono">
+                          <span className="text-[10px] text-amber-800/80 font-mono font-semibold">
                             Heidelberg 4-Colour Offset
                           </span>
                         </div>
 
                         {series.innerImage ? (
-                          <div className="relative rounded-md overflow-hidden border border-slate-200 bg-slate-50">
+                          <div className="relative rounded-md overflow-hidden border border-amber-200/80 bg-white flex items-center justify-center min-h-[380px] p-3">
                             <img
                               src={`/${series.innerImage}`}
                               alt={`${series.name} Inner Layout`}
-                              className="w-full h-auto object-contain max-h-[420px] p-2 hover:scale-102 transition-transform duration-200"
+                              className="w-full h-auto object-contain max-h-[440px] hover:scale-102 transition-transform duration-200"
                             />
-                            <div className="absolute bottom-2 left-2 right-2 bg-white/95 px-2.5 py-1 rounded-md border border-slate-200 text-[10px] text-slate-700 flex items-center justify-between">
+                            <div className="absolute bottom-2 left-2 right-2 bg-white/95 backdrop-blur-xs px-2.5 py-1.5 rounded-md border border-slate-200 text-[10px] text-slate-700 flex items-center justify-between">
                               <span className="font-semibold">Authentic Inner Specimen</span>
-                              <span className="font-mono text-amber-800">Direct Mill Sample</span>
+                              <span className="font-mono text-amber-800 font-bold">Direct Mill Sample</span>
                             </div>
                           </div>
                         ) : (
@@ -354,10 +379,10 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                       </div>
 
                       {/* Technical specifications callout: rounded-md */}
-                      <div className="p-3.5 rounded-md bg-amber-50 border border-amber-200 space-y-2 text-xs">
+                      <div className="p-3.5 rounded-md bg-amber-50/80 border border-amber-200/90 space-y-2 text-xs">
                         <div className="flex items-center justify-between font-semibold text-slate-800">
                           <span className="text-slate-500">Printing Press Quality:</span>
-                          <span className="text-amber-950">Heidelberg 4-Color Precision</span>
+                          <span className="text-amber-950 font-bold">Heidelberg 4-Color Precision</span>
                         </div>
                         <div className="flex items-center justify-between font-semibold text-slate-800">
                           <span className="text-slate-500">Paper Grade:</span>
@@ -370,40 +395,40 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                       </div>
                     </div>
 
-                    {/* RIGHT COLUMN: Cover Variations & Finishes Grid */}
-                    <div className="lg:col-span-7 space-y-4">
+                    {/* RIGHT COLUMN: Cover Variations & Finishes Grid (lg:col-span-7 xl:col-span-8) */}
+                    <div className="lg:col-span-7 xl:col-span-8 space-y-4">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-xs font-bold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
                           <Layers className="w-3.5 h-3.5 text-amber-700" />
                           <span>Cover Finishes & Available Colorways ({series.covers.length} options)</span>
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono">
-                          Click to select finish
+                        <span className="text-[10px] text-slate-500 font-mono">
+                          Click any thumbnail to preview
                         </span>
                       </div>
 
                       {/* Active Large Cover Preview: rounded-md, no shadow */}
                       {currentCover && (
-                        <div className="p-3 bg-slate-50 rounded-md border border-slate-200 flex flex-col sm:flex-row items-center gap-4 mb-4">
-                          <div className="w-32 sm:w-36 aspect-[3/4] rounded-md overflow-hidden border border-slate-200 bg-white shrink-0">
+                        <div className="p-4 bg-gradient-to-br from-amber-50/50 via-white to-slate-50 rounded-md border border-amber-200/80 flex flex-col sm:flex-row items-center gap-5 mb-4">
+                          <div className="w-36 sm:w-44 aspect-[3/4] rounded-md overflow-hidden border-2 border-amber-300 bg-white shrink-0">
                             <img
                               src={`/${currentCover}`}
                               alt={`${series.name} Selected Finish`}
                               className="w-full h-full object-cover"
                             />
                           </div>
-                          <div className="space-y-1.5 text-xs">
+                          <div className="space-y-2 text-xs flex-1">
                             <div className="flex items-center gap-2">
                               <span className="px-2 py-0.5 rounded-md bg-amber-500 text-slate-950 font-bold text-[10px] uppercase font-mono">
                                 Selected Finish #{activeCoverIdx + 1}
                               </span>
-                              <span className="text-slate-400 text-[10px]">2025 Edition</span>
+                              <span className="text-slate-500 text-[10px] font-medium">2025 Edition</span>
                             </div>
-                            <h4 className="font-bold text-slate-900 text-sm">
+                            <h4 className="font-bold text-slate-950 text-base">
                               {series.name} — Cover Specimen #{activeCoverIdx + 1}
                             </h4>
-                            <p className="text-slate-600 text-xs leading-relaxed">
-                              Featuring durable machine binding, fine hot-foil crest embossing, and premium corner protection.
+                            <p className="text-slate-600 text-xs leading-relaxed max-w-xl">
+                              Featuring durable Sivakasi machine binding, fine hot-foil crest embossing, reinforced spine hinge, and premium corner protection.
                             </p>
                             <button
                               onClick={() => onOpenInquiry(`${series.name} - Cover #${activeCoverIdx + 1}`)}
@@ -416,9 +441,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                         </div>
                       )}
 
-                      {/* Thumbnails Grid: rounded-md, no shadow */}
+                      {/* Wide Responsive Thumbnails Grid: on full width, utilizes 3 to 8 columns */}
                       {series.covers.length > 0 ? (
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 gap-3">
                           {series.covers.map((coverSrc, coverIdx) => {
                             const isSelected = activeCoverIdx === coverIdx
                             return (
@@ -430,10 +455,10 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                                     [series.id]: coverIdx,
                                   }))
                                 }
-                                className={`group relative rounded-md overflow-hidden border transition-colors cursor-pointer flex flex-col ${
+                                className={`group relative rounded-md overflow-hidden border transition-all cursor-pointer flex flex-col ${
                                   isSelected
-                                    ? 'border-2 border-amber-500 bg-amber-50/40'
-                                    : 'border-slate-200 bg-white hover:border-amber-400'
+                                    ? 'border-2 border-amber-500 bg-amber-50/60 ring-2 ring-amber-400/20'
+                                    : 'border-slate-200 bg-white hover:border-amber-400 hover:bg-amber-50/20'
                                 }`}
                               >
                                 <div className="relative aspect-[3/4] bg-slate-100 overflow-hidden">
@@ -468,14 +493,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                       )}
 
                       {/* Customization Callout: rounded-md */}
-                      <div className="p-3 bg-white rounded-md border border-slate-200 flex items-center justify-between text-xs">
-                        <span className="text-slate-600 flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <div className="p-3.5 bg-amber-50/60 rounded-md border border-amber-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                        <span className="text-slate-700 flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                           <span>Custom company logo foil stamping & personalized insert sheets available.</span>
                         </span>
                         <button
                           onClick={() => onOpenInquiry(`${series.name} - Custom Branding`)}
-                          className="font-bold text-amber-800 hover:text-amber-950 underline underline-offset-2 shrink-0 ml-2 cursor-pointer"
+                          className="font-bold text-amber-800 hover:text-amber-950 underline underline-offset-2 shrink-0 cursor-pointer"
                         >
                           Enquire Customization
                         </button>
@@ -488,9 +513,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           </div>
         )}
 
-        {/* Sivakasi Factory Direct Wholesale Inquiries Card: rounded-md, no shadow */}
-        <div className="mt-16 p-8 sm:p-10 rounded-md bg-amber-50/95 backdrop-blur-xs border border-amber-300 text-center relative overflow-hidden">
-          <div className="max-w-2xl mx-auto space-y-3">
+        {/* Sivakasi Factory Direct Wholesale Inquiries Card: Full Width, rounded-md, no shadow */}
+        <div className="mt-16 p-8 sm:p-12 rounded-md bg-amber-50 border border-amber-300 text-center relative overflow-hidden">
+          <div className="max-w-3xl mx-auto space-y-3">
             <span className="font-handwriting text-2xl text-amber-800 block">
               Sivakasi Master Printing Tradition Since 1994
             </span>
