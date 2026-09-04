@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar'
 import { HeroSection } from './components/HeroSection'
 import { AboutSection } from './components/AboutSection'
 import { ProcessSection } from './components/ProcessSection'
+import { CustomizeSection } from './components/CustomizeSection'
 import { CollectionsShowcase } from './components/CollectionsShowcase'
 import { PrintingSolutions } from './components/PrintingSolutions'
 import { Footer } from './components/Footer'
@@ -65,8 +66,12 @@ export default function App() {
           />
         </BookSectionReveal>
 
-
-        {/* 2025 Sorsons Diaries Collection Showcase with Book-Open Reveal */}
+        {/* Made to Your Exact Requirements - Customization Showcase */}
+        <BookSectionReveal delayMs={75}>
+          <CustomizeSection
+            onOpenInquiry={(details?: string) => handleOpenInquiry(details || 'Customized Diary')}
+          />
+        </BookSectionReveal>
         <BookSectionReveal delayMs={100}>
           <CollectionsShowcase
             onSelectProduct={(name) => handleOpenInquiry(name)}
