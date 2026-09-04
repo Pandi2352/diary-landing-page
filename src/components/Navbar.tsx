@@ -92,25 +92,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
           }}
           className="flex items-center gap-3 group text-left cursor-pointer"
         >
-          <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center text-slate-950 shadow-xs border border-amber-300">
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center text-slate-950 shadow-xs border border-amber-300 shrink-0">
             <BookOpen className="w-5 h-5 text-slate-950" />
-            <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-md bg-slate-900 flex items-center justify-center text-white border border-amber-200">
+            {/* Secondary Printer badge: preserved on desktop web view, hidden on mobile to avoid awkward overlapping */}
+            <div className="hidden sm:flex absolute -bottom-1 -right-1 w-4 h-4 rounded-md bg-slate-900 items-center justify-center text-white border border-amber-200">
               <Printer className="w-2.5 h-2.5" />
             </div>
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 font-display">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="font-extrabold text-base sm:text-xl tracking-tight text-slate-900 font-display">
                 SORSONS
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">
+              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">
                 2025 Ed.
               </span>
             </div>
-            <p className="text-[10px] sm:text-[11px] text-slate-500 tracking-wide font-medium flex items-center gap-1.5 max-w-[180px] sm:max-w-none truncate">
-              <span className="truncate">Sutharsan Offset Printers</span>
+            <p className="text-[10px] sm:text-[11px] text-slate-500 tracking-wide font-medium flex items-center gap-1.5 whitespace-nowrap">
+              <span className="sm:hidden text-slate-600 font-semibold">Sutharsan Offset</span>
+              <span className="hidden sm:inline">Sutharsan Offset Printers</span>
               <span className="w-1 h-1 rounded-full bg-slate-400 shrink-0" />
-              <span className="text-amber-800 font-semibold font-serif italic shrink-0">Sivakasi</span>
+              <span className="text-amber-800 font-bold font-serif italic shrink-0">Sivakasi</span>
             </p>
           </div>
         </button>

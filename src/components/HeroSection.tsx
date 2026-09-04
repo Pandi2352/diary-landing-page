@@ -43,12 +43,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     >
       {/* ===================== Background artwork (starts below navbar) ===================== */}
       <div aria-hidden="true" className="pointer-events-none absolute top-16 sm:top-20 inset-x-0 bottom-0 -z-10 overflow-hidden">
-        {/* Full-bleed unified hero artwork: starts below navbar, zero clipping */}
+        {/* Desktop: full-bleed unified hero artwork, pinned right so the copy
+            sits on the artwork's clean cream area. */}
         <img
           src="/images/unified_hero_banner.jpg?v=final7"
           alt=""
-          className="w-full h-full object-cover object-right select-none"
+          className="hidden lg:block w-full h-full object-cover object-right select-none"
         />
+
+        {/* Below lg the viewport is too narrow to crop that artwork without the
+            copy landing on the busy product half, so the banner moves inline
+            underneath the CTAs and the backdrop becomes a soft brand wash. */}
+        <div className="absolute inset-0 lg:hidden bg-[radial-gradient(125%_85%_at_88%_0%,#ffe7f2_0%,#fdf6ec_48%,#fdf6ec_100%)]" />
+        <div className="absolute -top-16 -right-20 h-64 w-64 rounded-full bg-gradient-to-br from-fuchsia-200/45 to-orange-200/40 blur-3xl lg:hidden" />
+        <div className="absolute bottom-16 -left-24 h-56 w-56 rounded-full bg-gradient-to-tr from-violet-200/40 to-sky-200/35 blur-3xl lg:hidden" />
 
         {/* Soft bottom blend to transition smoothly into the next section */}
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#fdf6ec] to-transparent" />
@@ -57,10 +65,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-24">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
           {/* ===================== Left: typography & CTAs ===================== */}
-          <div className="text-center lg:col-span-6 lg:text-left max-w-xl xl:max-w-2xl">
+          <div className="mx-auto text-center lg:col-span-6 lg:mx-0 lg:text-left max-w-xl xl:max-w-2xl">
             {/* Headline */}
             <h1 className="hero-rise font-display text-3xl font-black leading-[1.1] tracking-[-0.03em] text-slate-950 sm:text-4xl lg:text-[3.2rem] xl:text-[3.65rem]">
-              <div className="flex items-baseline justify-center gap-3 lg:justify-start">
+              <div className="flex items-baseline justify-center gap-2 sm:gap-3 lg:justify-start">
                 <span>Your</span>
                 <span className="relative inline-block">
                   <span className="hero-script text-[1.28em] font-bold tracking-normal bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 bg-clip-text text-transparent pr-1">
@@ -100,7 +108,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 Deserve a
               </div>
 
-              <div className="mt-1 sm:mt-2 flex items-baseline justify-center gap-3 lg:justify-start">
+              <div className="mt-1 sm:mt-2 flex items-baseline justify-center gap-2 sm:gap-3 lg:justify-start">
                 <span className="hero-gradient-text inline-block">
                   Beautiful
                 </span>
@@ -163,6 +171,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* ===================== Mobile/tablet: the product banner, below the CTAs ===================== */}
+          <div className="hero-pop mx-auto w-full max-w-xl lg:hidden" style={{ animationDelay: '0.95s' }}>
+            <div className="overflow-hidden rounded-[1.75rem] border border-white/80 bg-white/50 shadow-[0_18px_40px_-24px_rgba(15,23,42,0.45)]">
+              <img
+                src="/images/unified_hero_banner.jpg?v=final7"
+                alt="The Better Days Ahead pastel marble diary on a lilac pedestal, flanked by the Small Steps Big Dreams black journal and the Good Things Take Time emerald botanical journal"
+                className="hero-float w-full aspect-[5/4] object-cover object-[70%_center] sm:aspect-[16/10]"
+              />
+            </div>
           </div>
 
           {/* ===================== Right: Artwork canvas spacer (Desktop only) ===================== */}

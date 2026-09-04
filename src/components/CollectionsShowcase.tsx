@@ -55,7 +55,7 @@ export const CollectionsShowcase: React.FC<CollectionsShowcaseProps> = () => {
   return (
     <section
       id="products"
-      className="py-16 md:py-24 bg-[#faf9f5]/85 backdrop-blur-sm border-b border-[#e8e1d5] relative"
+      className="py-16 md:py-24 bg-[#faf9f5]/85 backdrop-blur-sm border-b border-[#e8e1d5] relative overflow-hidden"
     >
       {/* Decorative Warm Ambient Glow */}
       <div

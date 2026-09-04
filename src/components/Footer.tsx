@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectProductCategory }) => {
     <footer id="contact" className="bg-[#f8fafc] border-t border-slate-200 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-slate-200">
-          
+
           {/* Brand Column */}
           <div className="lg:col-span-4 space-y-3">
             <div className="flex items-center gap-3">
@@ -140,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectProductCategory }) => {
         {/* Bottom Bar: rounded-md, no shadows */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            Copyright © 2025, <strong className="text-slate-800">Sutharsan Offset Printers</strong>. All rights reserved. Developed by <span className="text-amber-700 font-semibold">Sri Softwarez</span>
+            Copyright © 2025, <strong className="text-slate-800">Sutharsan Offset Printers</strong>. All rights reserved. Developed by <span className="text-amber-700 font-semibold">Skillmine</span>
           </p>
 
           <button

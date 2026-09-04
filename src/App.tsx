@@ -36,7 +36,7 @@ function HomePage({
       </BookSectionReveal>
 
       {/* 1. "FROM IDEA TO DIARY" Process Section */}
-      <BookSectionReveal delayMs={50}>
+      <BookSectionReveal>
         <ProcessSection
           onStartRequirement={() => {
             const el = document.getElementById('customize')
@@ -46,19 +46,19 @@ function HomePage({
       </BookSectionReveal>
 
       {/* 2. "Explore Us: The 4 Pillars of Sorsons Diaries" */}
-      <BookSectionReveal delayMs={60}>
+      <BookSectionReveal>
         <ExploreSection />
       </BookSectionReveal>
 
       {/* 3. "CUSTOMIZATION STUDIO" */}
-      <BookSectionReveal delayMs={75}>
+      <BookSectionReveal>
         <CustomizeSection
           onOpenInquiry={(details?: string) => onOpenInquiry(details || 'Customized Diary')}
         />
       </BookSectionReveal>
 
       {/* 4. Products Collections Showcase */}
-      <BookSectionReveal delayMs={100}>
+      <BookSectionReveal>
         <CollectionsShowcase
           onSelectProduct={(name) => onOpenInquiry(name)}
           onInspect3D={() => {
@@ -68,7 +68,7 @@ function HomePage({
       </BookSectionReveal>
 
       {/* 5. Printing Solutions */}
-      <BookSectionReveal delayMs={150}>
+      <BookSectionReveal>
         <PrintingSolutions />
       </BookSectionReveal>
     </>

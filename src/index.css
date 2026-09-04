@@ -14,6 +14,10 @@
 
   html {
     scroll-behavior: smooth;
+    /* Guard: a stray decorative element must never scroll the page sideways.
+       'clip' (not 'hidden') so it does not become a scroll container and
+       break position: sticky. */
+    overflow-x: clip;
   }
 
   body {
@@ -88,6 +92,10 @@
 /* 3D Book-Open Scroll Entrance Animations */
 .perspective-container {
   perspective: 1400px;
+  /* Sections start at rotateY(-12deg) from a left origin, which throws their
+     right edge past the viewport until they reveal. Clip that on the x axis
+     only ('clip' keeps the y axis visible, so sticky/scroll still work). */
+  overflow-x: clip;
 }
 
 .book-page-leaf {
